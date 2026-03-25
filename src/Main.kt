@@ -13,12 +13,15 @@
 var board = mutableListOf<String>()
 var player1Name: String = ""
 var player2Name: String = ""
+var win = false
 
 fun main() {
     playerNames()
     createBoard()
     addCounters()
     showBoard()
+    getPlayerAction()
+
 
 }
 
@@ -30,6 +33,9 @@ fun playerNames() {
 
     print("Player 2 Name: ")
     player2Name = readln()
+
+    println()
+    println("$player1Name vs $player2Name")
 
 
 }
@@ -74,7 +80,6 @@ fun addCounters() {
 fun showBoard() {
     println()
 
-    println("$player1Name vs $player2Name")
 
     println()
 
@@ -96,14 +101,87 @@ fun showBoard() {
     print("┴───".repeat(board.size - 1))
     println("┘")
 }
+fun getPlayerAction() {
+
+    while (true) {
+        player1Action()
+        showBoard()
+
+        player2Action()
+        showBoard()
+    }
+}
 
 fun player1Action() {
+
+    var pickCounter = 0
+
+    while (true) {
+       print("$player1Name Choose A Counter: ")
+       pickCounter = readln().toInt() - 1
+       if (board[pickCounter] == "x" || board[pickCounter] == "o")break
+   }
+
+    println()
+    var moveCounter = 0
+
+    while (true){
+        print("Where Do You Want To Move It: ")
+        moveCounter =readln().toInt() - 1
+        if (moveCounter == 0 ) {
+            board[pickCounter] = " "
+            break
+        } else {
+            if (moveCounter <pickCounter && board[moveCounter] == " ") break
+            }
+    }
+    val choice1 = board[pickCounter]
+    val choice2 = board[moveCounter]
+
+    board[moveCounter] = choice1
+    board[pickCounter] = choice2
+
+
 
 }
 
 fun player2Action() {
 
+    var pickCounter = 0
+
+    while (true) {
+        print("$player2Name Choose A Counter: ")
+        pickCounter = readln().toInt() - 1
+        if (board[pickCounter] == "x" || board[pickCounter] == "o") break
+    }
+
+    println()
+    var moveCounter = 0
+
+    while (true) {
+        print("Where Do You Want To Move It: ")
+        moveCounter = readln().toInt() - 1
+        if (moveCounter == 0 ) {
+            board[pickCounter] = " "
+            break
+
+        } else {
+            if (moveCounter <pickCounter && board[moveCounter] == " ") break
+        }
+    }
+    val choice1 = board[pickCounter]
+    val choice2 = board[moveCounter]
+
+    board[moveCounter] = choice1
+    board[pickCounter] = choice2
+
 }
+
+fun checkWin() {
+
+    win = true
+}
+
 
 
 
