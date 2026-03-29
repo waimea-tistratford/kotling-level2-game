@@ -169,6 +169,15 @@ fun player2Action() {
             if (moveCounter <pickCounter && board[moveCounter] == " ") break
         }
     }
+    var highestX = 0
+
+    for (space in board) {
+        if (space > board[moveCounter] && space < board[pickCounter] && ( space == "x" || space == "o")){
+            highestX =
+        }
+
+    }
+
     val choice1 = board[pickCounter]
     val choice2 = board[moveCounter]
 
