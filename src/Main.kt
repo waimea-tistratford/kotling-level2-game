@@ -117,32 +117,49 @@ fun player1Action() {
     var pickCounter = 0
 
     while (true) {
-       print("$player1Name Choose A Counter: ")
-       pickCounter = readln().toInt() - 1
-       if (board[pickCounter] == "x" || board[pickCounter] == "o")break
-   }
+    // choosing counter ⏷ ----------------------------------------------------------------
+        print("$player1Name Choose A Counter: ")
+        pickCounter = readln().toInt() - 1
+        if (board[pickCounter] == "x" || board[pickCounter] == "o") break
+    }
 
     println()
     var moveCounter = 0
 
-    while (true){
+    while (true) {
+        // asking where to move it ⏷ ---------------------------------------------------------
         print("Where Do You Want To Move It: ")
-        moveCounter =readln().toInt() - 1
-        if (moveCounter == 0 ) {
-            board[pickCounter] = " "
-            break
-        } else {
-            if (moveCounter <pickCounter && board[moveCounter] == " ") break
+        moveCounter = readln().toInt() - 1
+
+        if (moveCounter < pickCounter && board[moveCounter] == " ") {
+            // Checking for counters in-between pick and move ⏷ ------------------------------
+
+            for (space in moveCounter..<pickCounter) {
+
+                if (board[space] == "x" || board[space] == "o") {
+
+                    println("${space + 1}")
+                    continue
+
+                }
             }
+            // Doing the move ⏷ ------------------------------------------------------
+            if (moveCounter == 0) {
+
+                board[pickCounter] = " "
+                break
+
+            } else {
+
+                val choice1 = board[pickCounter]
+                val choice2 = board[moveCounter]
+
+                board[moveCounter] = choice1
+                board[pickCounter] = choice2
+                break
+            }
+        }else continue
     }
-    val choice1 = board[pickCounter]
-    val choice2 = board[moveCounter]
-
-    board[moveCounter] = choice1
-    board[pickCounter] = choice2
-
-
-
 }
 
 fun player2Action() {
@@ -150,6 +167,7 @@ fun player2Action() {
     var pickCounter = 0
 
     while (true) {
+    // choosing counter ⏷ ----------------------------------------------------------------
         print("$player2Name Choose A Counter: ")
         pickCounter = readln().toInt() - 1
         if (board[pickCounter] == "x" || board[pickCounter] == "o") break
@@ -159,38 +177,44 @@ fun player2Action() {
     var moveCounter = 0
 
     while (true) {
+    // asking where to move it ⏷ ---------------------------------------------------------
         print("Where Do You Want To Move It: ")
         moveCounter = readln().toInt() - 1
-        if (moveCounter == 0 ) {
-            board[pickCounter] = " "
-            break
 
-        } else {
-            if (moveCounter <pickCounter && board[moveCounter] == " ") break
+        if (moveCounter < pickCounter && board[moveCounter] == " ") {
+        // Checking for counters in-between pick and move ⏷ ------------------------------
+            for (space in moveCounter..<pickCounter) {
+
+                if (board[space] == "x" || board[space] == "o") {
+
+                    println("${space + 1}")
+                    continue
+
+                } else {
+                // Doing the move ⏷ ------------------------------------------------------
+                    if (moveCounter == 0) {
+
+                        board[pickCounter] = " "
+
+                    } else {
+
+                        val choice1 = board[pickCounter]
+                        val choice2 = board[moveCounter]
+
+                        board[moveCounter] = choice1
+                        board[pickCounter] = choice2
+
+                    }
+                }
+            }
         }
     }
-    var highestX = 0
-
-    for (space in board) {
-        if (space > board[moveCounter] && space < board[pickCounter] && ( space == "x" || space == "o")){
-            highestX =
-        }
-
-    }
-
-    val choice1 = board[pickCounter]
-    val choice2 = board[moveCounter]
-
-    board[moveCounter] = choice1
-    board[pickCounter] = choice2
-
 }
 
 fun checkWin() {
 
     win = true
 }
-
 
 
 
