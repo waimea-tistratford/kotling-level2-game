@@ -13,7 +13,11 @@
 var board = mutableListOf<String>()
 var player1Name: String = ""
 var player2Name: String = ""
-var win = false
+var win = 0
+var p1 = 0
+var p2 = 1
+var winner = ("undecided")
+var loser = ("undecided")
 
 fun main() {
     playerNames()
@@ -103,22 +107,42 @@ fun showBoard() {
 }
 fun getPlayerAction() {
 
-    while (win == false) {
-        player1Action()
-        checkWin()
-        showBoard()
+    while (win == 0) {
 
-        player2Action()
-        checkWin()
-        showBoard()
+        playerAction()
+
     }
+
     println()
-    println("Congratulations _____ you've won the game")
-    println("____ you suck ass")
+    println("Congratulations $winner, you've won the game")
+    println("$loser, you suck ass")
 
 
 
 }
+
+
+fun playerAction() {
+
+
+  if (win == 0) {
+      player1Action()
+      p1++
+      p2--
+      showBoard()
+      checkWin()
+  }
+  if (win == 0) {
+      player2Action()
+      p1--
+      p2++
+      showBoard()
+      checkWin()
+  }
+
+}
+
+
 
 fun player1Action() {
 
@@ -128,7 +152,9 @@ fun player1Action() {
     // choosing counter ⏷ ----------------------------------------------------------------
         print("$player1Name Choose A Counter: ")
         pickCounter = readln().toInt() - 1
-        if (board[pickCounter] == "x" || board[pickCounter] == "o") break
+        if (board[pickCounter] == "x" || board[pickCounter] == "o") {
+            if (board[pickcounter - 1] ==  "x" )
+        }
     }
 
     println()
@@ -241,14 +267,29 @@ fun checkWin() {
 
     }
     if (oCounterCount == 0) {
-        endGame()
+        win++
     }
-    
+
+// check winner ------------------------
+
+    if (win == 1) {
+        val highest = maxOf(p1, p2)
+
+        if (highest == p1) {
+            winner = player1Name
+            loser = player2Name
+        }else {
+            winner = player2Name
+            loser = player1Name
+        }
+    }
+
+
+
+
 }
 
-fun endGame() {
-    win = true
-}
+
 
 
 
