@@ -16,15 +16,53 @@ var player2Name: String = ""
 var win = 0
 var p1 = 0
 var p2 = 1
-var winner = ("undecided")
-var loser = ("undecided")
+var winner = ("")
+var loser = ("")
 
 fun main() {
+    instructions()
     playerNames()
     createBoard()
     addCounters()
     showBoard()
     getPlayerAction()
+
+
+}
+
+fun instructions() {
+    println("───────────────────────────────────────────────────────────────────────-─────-──-─-────--─-- -   -")
+    println("Pinned \uD83D\uDCCC \n" +
+            "\n" +
+            "Game Setup \n" +
+            "\n" +
+            "A row of 16 squares, numbered 1 to 16 from left to right \n" +
+            "\n" +
+            "5 counters (total) are placed randomly on the board - 4 white and 1 black  \n" +
+            "\n" +
+            "Decide who goes first \n" +
+            "\n" +
+            "Gameplay \n" +
+            "\n" +
+            "Players take turns - You may not skip your turn \n" +
+            "\n" +
+            "On your turn you must do exactly one of the following: \n" +
+            "\n" +
+            "Slide any counter (black or white) any number of squares to the left\n" +
+            "\n" +
+            "As long as no other counter is in the way and the destination square is empty\n" +
+            "\n" +
+            "Or remove the counter on square 1 (only if a counter is there) \n" +
+            "\n" +
+            "Win Condition \n" +
+            "\n" +
+            "The player who removes the black counter from square 1 wins \n" +
+            "\n" +
+            "Variant \n" +
+            "\n" +
+            "Counters can slide either left or right (but still can’t jump other counters) ")
+    println("───────────────────────────────────────────────────────────────────────────-────-──--───-─--- -  -")
+    println()
 
 
 }
@@ -109,7 +147,7 @@ fun getPlayerAction() {
 
     while (win == 0) {
 
-        playerAction()
+        gameLoop()
 
     }
 
@@ -122,7 +160,7 @@ fun getPlayerAction() {
 }
 
 
-fun playerAction() {
+fun gameLoop() {
 
 
   if (win == 0) {
@@ -153,7 +191,10 @@ fun player1Action() {
         print("$player1Name Choose A Counter: ")
         pickCounter = readln().toInt() - 1
         if (board[pickCounter] == "x" || board[pickCounter] == "o") {
-            if (board[pickcounter - 1] ==  "x" )
+            if (board[pickCounter - 1] ==  "x" || board[pickCounter - 1] == "o" ){
+                continue
+            } else break
+
         }
     }
 
@@ -210,7 +251,11 @@ fun player2Action() {
         // choosing counter ⏷ ----------------------------------------------------------------
         print("$player2Name Choose A Counter: ")
         pickCounter = readln().toInt() - 1
-        if (board[pickCounter] == "x" || board[pickCounter] == "o") break
+        if (board[pickCounter] == "x" || board[pickCounter] == "o") {
+            if (board[pickCounter - 1] ==  "x" || board[pickCounter - 1] == "o" ){
+                continue
+            } else break
+        }
     }
 
     println()
