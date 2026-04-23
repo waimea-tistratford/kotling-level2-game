@@ -66,7 +66,7 @@ fun instructions() {
 
 
 }
-
+// getting the names of each player ----------------------------------------------
 fun playerNames() {
     print("Player 1 Name: ")
     player1Name = readln()
@@ -118,7 +118,7 @@ fun addCounters() {
 
 
 
-
+// showing the board -----------------------------------------------------------
 fun showBoard() {
     println()
 
@@ -159,7 +159,7 @@ fun getPlayerAction() {
 
 }
 
-
+// the main game loop ------------------------------------------------
 fun gameLoop() {
 
 
@@ -181,7 +181,7 @@ fun gameLoop() {
 }
 
 
-
+// player 1 move --------------------------------------------------------------------
 fun player1Action() {
 
     var pickCounter = 0
@@ -242,7 +242,7 @@ fun player1Action() {
     }
 }
 
-
+// player 2 move --------------------------------------------------------
 fun player2Action() {
 
     var pickCounter = 0
@@ -301,6 +301,7 @@ fun player2Action() {
     }
 }
 
+// checking for a win -------------------------------
 fun checkWin() {
 
     var oCounterCount = 0
@@ -315,7 +316,7 @@ fun checkWin() {
         win++
     }
 
-// check winner ------------------------
+// check for the  winner ------------------------
 
     if (win == 1) {
         val highest = maxOf(p1, p2)
