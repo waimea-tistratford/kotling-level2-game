@@ -1,3 +1,5 @@
+@file:Suppress("DuplicatedCode")
+
 /**
  * =====================================================================
  * Programming Project for NCEA Level 2, Standard 91896
@@ -22,13 +24,32 @@ var loser = ("")
 fun main() {
     instructions()
     playerNames()
-    createBoard()
-    addCounters()
-    showBoard()
-    getPlayerAction()
 
 
+
+    while(true) {
+        win = 0
+        createBoard()
+        addCounters()
+        showBoard()
+        playGame()
+
+        var replayCheck = ""
+
+        while (true) {
+            println("Do you want to play again? Y/N: ")
+            replayCheck = readln()
+
+            if (replayCheck.isNotBlank()) break
+        }
+
+        if (replayCheck.uppercase() == "N") break
+        else {
+            continue
+        }
+    }
 }
+
 
 fun instructions() {
     println("───────────────────────────────────────────────────────────────────────-─────-──-─-────--─-- -   -")
@@ -68,16 +89,25 @@ fun instructions() {
 }
 // getting the names of each player ----------------------------------------------
 fun playerNames() {
-    print("Player 1 Name: ")
-    player1Name = readln()
+   while (true) {
+       print("Player 1 Name: ")
+       player1Name = readln()
 
-
-
-    print("Player 2 Name: ")
-    player2Name = readln()
+       if (player1Name.isNotBlank()) break
+   }
 
     println()
-    println("$player1Name vs $player2Name")
+
+   while (true) {
+       print("Player 2 Name: ")
+       player2Name = readln()
+
+       if (player2Name.isNotBlank()) break
+   }
+
+       println()
+       println("$player1Name vs $player2Name")
+
 
 
 }
@@ -91,25 +121,25 @@ fun createBoard() {
 }
 
 fun addCounters() {
-    val x_counter = "x"
+    val xCounter = "x"
 
     repeat(4) {
         while (true) {
-            val x_counterPosition = (1..<board.size).random()
-            if (board[x_counterPosition] == " ") {
-                board[x_counterPosition] = x_counter
+            val xCounterposition = (1..<board.size).random()
+            if (board[xCounterposition] == " ") {
+                board[xCounterposition] = xCounter
                 break
             }
         }
     }
 
-    val o_counter = "o"
+    val oCounter = "o"
 
     repeat(1) {
         while (true) {
-            val o_counterPosition = (1..<board.size).random()
-            if (board[o_counterPosition] == " ") {
-                board[o_counterPosition] = o_counter
+            val oCounterposition = (1..<board.size).random()
+            if (board[oCounterposition] == " ") {
+                board[oCounterposition] = oCounter
                 break
             }
         }
@@ -143,24 +173,25 @@ fun showBoard() {
     print("┴───".repeat(board.size - 1))
     println("┘")
 }
-fun getPlayerAction() {
+fun playGame() {
 
     while (win == 0) {
 
-        gameLoop()
+        gameTurn()
 
     }
 
     println()
     println("Congratulations $winner, you've won the game")
     println("$loser, you suck ass")
+    println()
 
 
 
 }
 
 // the main game loop ------------------------------------------------
-fun gameLoop() {
+fun gameTurn() {
 
 
   if (win == 0) {
@@ -184,32 +215,44 @@ fun gameLoop() {
 // player 1 move --------------------------------------------------------------------
 fun player1Action() {
 
-    var pickCounter = 0
+    var pickCounter: Int?
+    var moveCounter: Int?
 
     while (true) {
     // choosing counter ⏷ ----------------------------------------------------------------
-        print("$player1Name Choose A Counter: ")
-        pickCounter = readln().toInt() - 1
+
+        while (true) {
+            print("$player1Name Choose A Counter: ")
+            pickCounter = readlnOrNull()?.toIntOrNull()
+
+            if (pickCounter != null) break
+        }
+
+        pickCounter = pickCounter!! - 1
+
         if (board[pickCounter] == "x" || board[pickCounter] == "o") {
             if (board[pickCounter - 1] ==  "x" || board[pickCounter - 1] == "o" ){
                 continue
             } else break
-
         }
     }
 
     println()
-    var moveCounter = 0
 
     while (true) {
         // asking where to move it ⏷ ---------------------------------------------------------
-        print("Where Do You Want To Move It: ")
-        moveCounter = readln().toInt() - 1
+        while (true) {
+            print("Where Do You Want To Move It: ")
+            moveCounter = readlnOrNull()?.toIntOrNull()
 
-        if (moveCounter >= pickCounter) {
-            continue
+            if (moveCounter != null) break
         }
 
+        moveCounter = moveCounter!! - 1
+
+        if (moveCounter >= pickCounter!!) {
+            continue
+        }
         // Doing the move ⏷ ------------------------------------------------------
 
         var counterCount = 0
@@ -236,7 +279,6 @@ fun player1Action() {
                 board[moveCounter] = choice1
                 board[pickCounter] = choice2
                 break
-
             }
         }
     }
@@ -245,12 +287,20 @@ fun player1Action() {
 // player 2 move --------------------------------------------------------
 fun player2Action() {
 
-    var pickCounter = 0
+    var pickCounter: Int?
+    var moveCounter: Int?
 
     while (true) {
         // choosing counter ⏷ ----------------------------------------------------------------
-        print("$player2Name Choose A Counter: ")
-        pickCounter = readln().toInt() - 1
+       while (true) {
+           print("$player2Name Choose A Counter: ")
+           pickCounter = readlnOrNull()?.toIntOrNull()
+
+           if (pickCounter != null) break
+       }
+
+        pickCounter = pickCounter!! - 1
+
         if (board[pickCounter] == "x" || board[pickCounter] == "o") {
             if (board[pickCounter - 1] ==  "x" || board[pickCounter - 1] == "o" ){
                 continue
@@ -259,14 +309,19 @@ fun player2Action() {
     }
 
     println()
-    var moveCounter = 0
 
     while (true) {
         // asking where to move it ⏷ ---------------------------------------------------------
-        print("Where Do You Want To Move It: ")
-        moveCounter = readln().toInt() - 1
+        while (true) {
+            print("Where Do You Want To Move It: ")
+            moveCounter = readlnOrNull()?.toIntOrNull()
 
-        if (moveCounter >= pickCounter) {
+            if (moveCounter != null) break
+        }
+
+        moveCounter = moveCounter!! - 1
+
+        if (moveCounter >= pickCounter!!) {
             continue
         }
 
