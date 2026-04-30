@@ -32,12 +32,12 @@ fun main() {
         createBoard()
         addCounters()
         showBoard()
-        playGame()
+        won()
 
-        var replayCheck = ""
+        var replayCheck: String
 
         while (true) {
-            println("Do you want to play again? Y/N: ")
+            print("Do you want to play again? Y/N: ")
             replayCheck = readln()
 
             if (replayCheck.isNotBlank()) break
@@ -52,10 +52,11 @@ fun main() {
 
 
 fun instructions() {
-    println("───────────────────────────────────────────────────────────────────────-─────-──-─-────--─-- -   -")
-    println("Pinned \uD83D\uDCCC \n" +
+    println("- ─- ─ ─-──- ──-─-──-────────────────────────────────────────────────────-──-─ -──--─-- -  -")
+    println("                                        PINNED \uD83D\uDCCC \n" +
+            "- -  ─- -─- ─-────-───────────────────────────────────────────────────-────-──--───-─---  -\n" +
             "\n" +
-            "Game Setup \n" +
+            "-  -─ --─- ─--─ ────────────-────-───┤ Game Setup ├─-─────────────--───-──-─ -─-  ─ -\n" +
             "\n" +
             "A row of 16 squares, numbered 1 to 16 from left to right \n" +
             "\n" +
@@ -63,7 +64,7 @@ fun instructions() {
             "\n" +
             "Decide who goes first \n" +
             "\n" +
-            "Gameplay \n" +
+            "- ─- ─- -─- ─── ───-──-───────────────┤ Gameplay ├─────────-────────---──-─ --─ ─-  - \n" +
             "\n" +
             "Players take turns - You may not skip your turn \n" +
             "\n" +
@@ -75,14 +76,10 @@ fun instructions() {
             "\n" +
             "Or remove the counter on square 1 (only if a counter is there) \n" +
             "\n" +
-            "Win Condition \n" +
+            "- -── ─-─ -─-─ ─── -────--─────────┤ Win Condition ├─────────────-───-─-───- -─--─- -- -  \n" +
             "\n" +
-            "The player who removes the black counter from square 1 wins \n" +
-            "\n" +
-            "Variant \n" +
-            "\n" +
-            "Counters can slide either left or right (but still can’t jump other counters) ")
-    println("───────────────────────────────────────────────────────────────────────────-────-──--───-─--- -  -")
+            "The player who removes the black counter from square 1 wins \n")
+    println("- -  ─- -─- ─-────-───────────────────────────────────────────────────-────-──--───-─--- -  -")
     println()
 
 
@@ -107,7 +104,7 @@ fun playerNames() {
 
        println()
        println("$player1Name vs $player2Name")
-
+       println("Welcome to PINNED")
 
 
 }
@@ -150,10 +147,8 @@ fun addCounters() {
 
 // showing the board -----------------------------------------------------------
 fun showBoard() {
-    println()
 
-
-    println()
+    println("────────────────────────────────-────-──--───-─--- -  -")
 
     print("  1   2   3   4   5   6   7   8   9   10  11  12  13  14  15  16")
 
@@ -172,8 +167,12 @@ fun showBoard() {
     print("└───")
     print("┴───".repeat(board.size - 1))
     println("┘")
+
+    println("──────-────-──--───-─--- -  -")
 }
-fun playGame() {
+
+
+fun won() {
 
     while (win == 0) {
 
@@ -183,7 +182,7 @@ fun playGame() {
 
     println()
     println("Congratulations $winner, you've won the game")
-    println("$loser, you suck ass")
+    println("$loser, you're horrible at this")
     println()
 
 
@@ -200,6 +199,7 @@ fun gameTurn() {
       p2--
       showBoard()
       checkWin()
+
   }
   if (win == 0) {
       player2Action()
@@ -222,7 +222,7 @@ fun player1Action() {
     // choosing counter ⏷ ----------------------------------------------------------------
 
         while (true) {
-            print("$player1Name Choose A Counter: ")
+            print("$player1Name Choose A Counter: ".green())
             pickCounter = readlnOrNull()?.toIntOrNull()
 
             if (pickCounter != null) break
@@ -242,7 +242,7 @@ fun player1Action() {
     while (true) {
         // asking where to move it ⏷ ---------------------------------------------------------
         while (true) {
-            print("Where Do You Want To Move It: ")
+            print("Where Do You Want To Move It: ".green())
             moveCounter = readlnOrNull()?.toIntOrNull()
 
             if (moveCounter != null) break
@@ -293,7 +293,7 @@ fun player2Action() {
     while (true) {
         // choosing counter ⏷ ----------------------------------------------------------------
        while (true) {
-           print("$player2Name Choose A Counter: ")
+           print("$player2Name Choose A Counter: ".green())
            pickCounter = readlnOrNull()?.toIntOrNull()
 
            if (pickCounter != null) break
@@ -313,7 +313,7 @@ fun player2Action() {
     while (true) {
         // asking where to move it ⏷ ---------------------------------------------------------
         while (true) {
-            print("Where Do You Want To Move It: ")
+            print("Where Do You Want To Move It: ".green())
             moveCounter = readlnOrNull()?.toIntOrNull()
 
             if (moveCounter != null) break
