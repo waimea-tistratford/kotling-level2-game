@@ -60,7 +60,7 @@ fun instructions() {
             "\n" +
             "A row of 16 squares, numbered 1 to 16 from left to right \n" +
             "\n" +
-            "5 counters (total) are placed randomly on the board - 4 white and 1 black  \n" +
+            "5 counters are placed randomly on the board - 4 white and 1 black  \n" +
             "\n" +
             "Decide who goes first \n" +
             "\n" +
@@ -70,7 +70,7 @@ fun instructions() {
             "\n" +
             "On your turn you must do exactly one of the following: \n" +
             "\n" +
-            "Slide any counter (black or white) any number of squares to the left\n" +
+            "Slide any counter any number of squares to the left\n" +
             "\n" +
             "As long as no other counter is in the way and the destination square is empty\n" +
             "\n" +
@@ -87,7 +87,7 @@ fun instructions() {
 // getting the names of each player ----------------------------------------------
 fun playerNames() {
    while (true) {
-       print("Player 1 Name: ")
+       print("Player 1 Name: ".col(40, 125, 40))
        player1Name = readln()
 
        if (player1Name.isNotBlank()) break
@@ -96,15 +96,15 @@ fun playerNames() {
     println()
 
    while (true) {
-       print("Player 2 Name: ")
+       print("Player 2 Name: ".col(40, 200, 40))
        player2Name = readln()
 
        if (player2Name.isNotBlank()) break
    }
 
-       println()
-       println("$player1Name vs $player2Name")
-       println("Welcome to PINNED")
+    println()
+    println("$player1Name vs $player2Name")
+    println("Welcome to PINNED")
 
 
 }
@@ -222,7 +222,7 @@ fun player1Action() {
     // choosing counter ⏷ ----------------------------------------------------------------
 
         while (true) {
-            print("$player1Name Choose A Counter: ".green())
+            print("$player1Name Choose A Counter: ".col(40, 125, 40))
             pickCounter = readlnOrNull()?.toIntOrNull()
 
             if (pickCounter != null) break
@@ -231,18 +231,29 @@ fun player1Action() {
         pickCounter = pickCounter!! - 1
 
         if (board[pickCounter] == "x" || board[pickCounter] == "o") {
-            if (board[pickCounter - 1] ==  "x" || board[pickCounter - 1] == "o" ){
-                continue
-            } else break
+            if (pickCounter == 0) break
+
+            if (board[pickCounter - 1] == " ") {
+                break
+            }
         }
     }
 
     println()
 
+    // Was it in pos 0 (i.e. removing coin)?
+
+    if (pickCounter == 0) {
+        board[0] = " "
+        return
+    }
+
+    // Not in pos 1, so where to...?
+
     while (true) {
         // asking where to move it ⏷ ---------------------------------------------------------
         while (true) {
-            print("Where Do You Want To Move It: ".green())
+            print("Where Do You Want To Move It: ".col(40, 125, 40))
             moveCounter = readlnOrNull()?.toIntOrNull()
 
             if (moveCounter != null) break
@@ -263,26 +274,19 @@ fun player1Action() {
             }
 
         }
-        if (counterCount > 0) {
-            continue
-        }else {
-            if (moveCounter == 0) {
+        if (counterCount == 0) {
 
-                board[pickCounter] = " "
-                break
+            val choice1 = board[pickCounter]
+            val choice2 = board[moveCounter]
 
-            } else {
+            board[moveCounter] = choice1
+            board[pickCounter] = choice2
 
-                val choice1 = board[pickCounter]
-                val choice2 = board[moveCounter]
-
-                board[moveCounter] = choice1
-                board[pickCounter] = choice2
-                break
-            }
+            return
         }
     }
 }
+
 
 // player 2 move --------------------------------------------------------
 fun player2Action() {
@@ -293,7 +297,7 @@ fun player2Action() {
     while (true) {
         // choosing counter ⏷ ----------------------------------------------------------------
        while (true) {
-           print("$player2Name Choose A Counter: ".green())
+           print("$player2Name Choose A Counter: ".col(70, 200, 70))
            pickCounter = readlnOrNull()?.toIntOrNull()
 
            if (pickCounter != null) break
@@ -302,18 +306,27 @@ fun player2Action() {
         pickCounter = pickCounter!! - 1
 
         if (board[pickCounter] == "x" || board[pickCounter] == "o") {
-            if (board[pickCounter - 1] ==  "x" || board[pickCounter - 1] == "o" ){
-                continue
-            } else break
+            if (pickCounter == 0) break
+
+            if (board[pickCounter - 1] == " ") {
+                break
+            }
         }
     }
 
     println()
 
+    // Was it in pos 0 (i.e. removing coin)?
+
+    if (pickCounter == 0) {
+        board[0] = " "
+        return
+    }
+
     while (true) {
         // asking where to move it ⏷ ---------------------------------------------------------
         while (true) {
-            print("Where Do You Want To Move It: ".green())
+            print("Where Do You Want To Move It: ".col(70, 200, 70))
             moveCounter = readlnOrNull()?.toIntOrNull()
 
             if (moveCounter != null) break
@@ -384,10 +397,6 @@ fun checkWin() {
             loser = player1Name
         }
     }
-
-
-
-
 }
 
 
