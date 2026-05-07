@@ -58,11 +58,11 @@ checking for correct code for moving counters
 
 ### Test Data To Use
 
-blank squares with counters on or inbetween pick counter
+blank squares with counters on or in-between pick counter
 
 ### Expected Test Result
 
-Code will not allow squares inbetween pick and move and squares with counter on it then it will re-ask until given correct data
+Code will not allow squares in-between pick and move and squares with counter on it then it will re-ask until given correct data
 
 ---
 
@@ -90,7 +90,7 @@ x counter removed off square 1
 
 ### Expected Test Result
 
-when sqaure 1 is chosen with a x counter on it, it will be removed
+when square 1 is chosen with an x counter on it, it will be removed
 
 ---
 
@@ -105,6 +105,20 @@ o counter removed off square 1
 ### Expected Test Result
 
 when o counter removed game will end
+
+---
+
+## Replay game test
+
+testing the replay game function
+
+### Test Data To Use
+
+the replay game function and game set-up
+
+### Expected Test Result
+
+when saying yes it should start a new game without asking for name and no should end it
 
 ---
 

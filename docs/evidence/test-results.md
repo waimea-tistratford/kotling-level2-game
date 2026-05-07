@@ -14,9 +14,9 @@ inputting invalid and valid name data
 
 ### Test Result
 
-![example.png](screenshots/CheckValidPick.gif)
+![screenshots/CheckValidPick.gif](screenshots/CheckValidPick.gif)
 
-The test went perfect and no flaws, names couldnt be blank
+The test went perfect and no flaws, names couldn't be blank
 
 ---
 
@@ -30,7 +30,7 @@ inputting blank data and valid data into choosing counters
 
 ### Test Result
 
-![example.png](screenshots/CheckForBlankCounter.gif)
+![CheckForBlankCounter.gif](screenshots/CheckForBlankCounter.gif)
 
 the test went as planned, when blanks were entered it would re-ask
 
@@ -46,7 +46,7 @@ inputting invalid and valid data for choosing what counter to move
 
 ### Test Result
 
-![example.png](screenshots/CheckValidPick.gif)
+![screenshots/CheckValidPick.gif](screenshots/CheckValidPick.gif)
 
 the tests went great with no bumps, when putting anything else other than a number it would re ask
 
@@ -62,7 +62,7 @@ inputting data on blank squares with counters in the way, and squares with a cou
 
 ### Test Result
 
-![example.png](screenshots/CheckForValidMove.gif)
+![CheckForValidMove.gif](screenshots/CheckForValidMove.gif)
 
 test went smooth it was working as expected, with it not allowing it to move when there were counters in the way and on the square
 
@@ -78,7 +78,7 @@ playing the game by inputting correct data
 
 ### Test Result
 
-![example.png](screenshots/PlayerTurns.gif)
+![PlayerTurns.gif](screenshots/PlayerTurns.gif)
 
 players took turns with no problem
 
@@ -94,7 +94,7 @@ inputting data to remove off square 1
 
 ### Test Result
 
-![example.png](screenshots/PlayerTurns.gif)
+![PlayerTurns.gif](screenshots/PlayerTurns.gif)
 
 players took turns with no problem
 
@@ -110,8 +110,27 @@ removing o counter off square 1
 
 ### Test Result
 
-![example.png](screenshots/PlayerWins.gif)
+![PlayerWins.gif](screenshots/PlayerWins.gif)
 
 players won with no problem
 
 ---
+
+## Replay game test
+
+testing the replay game function
+
+### Test Data Used
+
+replay game function and make board
+
+### Test Result
+
+![ReplayGame.gif](screenshots/ReplayGame.gif)
+
+---
+
+![ReplayGameNo.gif](screenshots/ReplayGameNo.gif)
+
+
+when Y game replayed when N it ended
