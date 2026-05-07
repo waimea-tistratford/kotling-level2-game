@@ -26,7 +26,7 @@ fun main() {
     playerNames()
 
 
-
+// setting up game ⏷ -----------
     while(true) {
         win = 0
         createBoard()
@@ -84,12 +84,12 @@ fun instructions() {
 
 
 }
-// getting the names of each player ----------------------------------------------
+// getting the names of each player ⏷ ----------------------------------------------
 fun playerNames() {
    while (true) {
        print("Player 1 Name: ".col(40, 125, 40))
        player1Name = readln()
-
+    // checking if name is not blank
        if (player1Name.isNotBlank()) break
    }
 
@@ -109,7 +109,7 @@ fun playerNames() {
 
 }
 
-// Creating the board -----------------------------------------------------
+// Creating the board ⏷ -----------------------------------------------------
 
 fun createBoard() {
     while (board.size < 16) {
@@ -120,6 +120,7 @@ fun createBoard() {
 fun addCounters() {
     val xCounter = "x"
 
+    // placing x counters on the board
     repeat(4) {
         while (true) {
             val xCounterposition = (1..<board.size).random()
@@ -132,6 +133,7 @@ fun addCounters() {
 
     val oCounter = "o"
 
+    // placing o counter on the board
     repeat(1) {
         while (true) {
             val oCounterposition = (1..<board.size).random()
@@ -145,7 +147,7 @@ fun addCounters() {
 
 
 
-// showing the board -----------------------------------------------------------
+// showing the board ⏷ -----------------------------------------------------------
 fun showBoard() {
 
     println("────────────────────────────────-────-──--───-─--- -  -")
@@ -180,6 +182,7 @@ fun won() {
 
     }
 
+    // winnning
     println()
     println("Congratulations $winner, you've won the game")
     println("$loser, you're horrible at this")
@@ -189,14 +192,16 @@ fun won() {
 
 }
 
-// the main game loop ------------------------------------------------
+// the main game loop ⏷ ------------------------------------------------
 fun gameTurn() {
 
-
+ // player turn
   if (win == 0) {
       player1Action()
+      // showing whose turn it is ⏷
       p1++
       p2--
+      // --------------------------
       showBoard()
       checkWin()
 
@@ -212,7 +217,7 @@ fun gameTurn() {
 }
 
 
-// player 1 move --------------------------------------------------------------------
+// player 1 move ⏷ -------------------------------------------------------------------
 fun player1Action() {
 
     var pickCounter: Int?
@@ -225,12 +230,15 @@ fun player1Action() {
             print("$player1Name Choose A Counter: ".col(40, 125, 40))
             pickCounter = readlnOrNull()?.toIntOrNull()
 
+            // checking if null
             if (pickCounter != null) break
         }
 
         pickCounter = pickCounter!! - 1
 
+        //if it is a counter
         if (board[pickCounter] == "x" || board[pickCounter] == "o") {
+            // counter on 1
             if (pickCounter == 0) break
 
             if (board[pickCounter - 1] == " ") {
@@ -256,11 +264,13 @@ fun player1Action() {
             print("Where Do You Want To Move It: ".col(40, 125, 40))
             moveCounter = readlnOrNull()?.toIntOrNull()
 
+            // checking if not null
             if (moveCounter != null) break
         }
 
         moveCounter = moveCounter!! - 1
 
+        // cannot go over pick counter
         if (moveCounter >= pickCounter!!) {
             continue
         }
@@ -268,6 +278,7 @@ fun player1Action() {
 
         var counterCount = 0
 
+        // cannot jump counters
         for (index in moveCounter..<pickCounter ) {
             if (board[index] == "x" || board[index] == "o") {
                 counterCount++
@@ -373,13 +384,14 @@ fun player2Action() {
 fun checkWin() {
 
     var oCounterCount = 0
-    
+    // checking for an o counter on the board
     for (index in 0..<board.size) {
         if (board[index] == "o") {
             oCounterCount++
         }
 
     }
+    // if no o counters then win
     if (oCounterCount == 0) {
         win++
     }
@@ -387,6 +399,7 @@ fun checkWin() {
 // check for the  winner ------------------------
 
     if (win == 1) {
+        // choosing the winner
         val highest = maxOf(p1, p2)
 
         if (highest == p1) {
