@@ -4,7 +4,7 @@ The test results show the actual outcome of the testing, following the [Test Pla
 
 ---
 
-## Example Test Name
+## Name Test
 
 Checking for valid name data
 
@@ -16,71 +16,102 @@ inputting invalid and valid name data
 
 ![example.png](screenshots/CheckValidPick.gif)
 
-The test went perfect and no flaws
+The test went perfect and no flaws, names couldnt be blank
 
 ---
 
-## Example Test Name
+## Counter-Blank test
 
 checking for blank inputs when choosing counters
 
 ### Test Data Used
 
-inputting blank data and vaild data into choosing counters
+inputting blank data and valid data into choosing counters
 
 ### Test Result
 
 ![example.png](screenshots/CheckForBlankCounter.gif)
 
-the test went as planned
+the test went as planned, when blanks were entered it would re-ask
 
 ---
 
-## Example Test Name
+## Picking counter test
 
-Checking for vaild counter pick
+Checking for valid counter pick
 
 ### Test Data Used
 
-inputting invalid and vaild data for choosing what counter to move
+inputting invalid and valid data for choosing what counter to move
 
 ### Test Result
 
 ![example.png](screenshots/CheckValidPick.gif)
 
-the tests went great with no bumps
+the tests went great with no bumps, when putting anything else other than a number it would re ask
 
 ---
 
-## Example Test Name
+## Moving counter test
 
 checking for correct code for moving counters
 
 ### Test Data Used
 
-inputting data on blank sqaures with counters in the way, and squares with a counter
+inputting data on blank squares with counters in the way, and squares with a counter
 
 ### Test Result
 
 ![example.png](screenshots/CheckForValidMove.gif)
 
-test went smooth it was working as expected
+test went smooth it was working as expected, with it not allowing it to move when there were counters in the way and on the square
 
 ---
 
-## Example Test Name
+## Player turns test
 
 testing switching between player i.e. player turns
 
 ### Test Data Used
 
-inputting data
+playing the game by inputting correct data
 
 ### Test Result
 
-![example.png](screenshots/)
+![example.png](screenshots/PlayerTurns.gif)
 
-
+players took turns with no problem
 
 ---
 
+## Player removes counters
+
+removing x counters of square one
+
+### Test Data Used
+
+inputting data to remove off square 1
+
+### Test Result
+
+![example.png](screenshots/PlayerTurns.gif)
+
+players took turns with no problem
+
+---
+
+## Player wins test
+
+testing when o counter is removed game is ended
+
+### Test Data Used
+
+removing o counter off square 1
+
+### Test Result
+
+![example.png](screenshots/PlayerWins.gif)
+
+players won with no problem
+
+---
