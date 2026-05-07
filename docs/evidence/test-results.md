@@ -6,33 +6,81 @@ The test results show the actual outcome of the testing, following the [Test Pla
 
 ## Example Test Name
 
-Example test description. Example test description.Example test description. Example test description.Example test description. Example test description.
+Checking for valid name data
 
 ### Test Data Used
 
-Details of test data. Details of test data. Details of test data. Details of test data. Details of test data. Details of test data. Details of test data.
+inputting invalid and valid name data
 
 ### Test Result
 
-![example.png](screenshots/example.png)
+![example.png](screenshots/CheckValidPick.gif)
 
-Comment on test result. Comment on test result. Comment on test result. Comment on test result. Comment on test result. Comment on test result.
+The test went perfect and no flaws
 
 ---
 
 ## Example Test Name
 
-Example test description. Example test description.Example test description. Example test description.Example test description. Example test description.
+checking for blank inputs when choosing counters
 
 ### Test Data Used
 
-Details of test data. Details of test data. Details of test data. Details of test data. Details of test data. Details of test data. Details of test data.
+inputting blank data and vaild data into choosing counters
 
 ### Test Result
 
-![example.png](screenshots/example.png)
+![example.png](screenshots/CheckForBlankCounter.gif)
 
-Comment on test result. Comment on test result. Comment on test result. Comment on test result. Comment on test result. Comment on test result.
+the test went as planned
+
+---
+
+## Example Test Name
+
+Checking for vaild counter pick
+
+### Test Data Used
+
+inputting invalid and vaild data for choosing what counter to move
+
+### Test Result
+
+![example.png](screenshots/CheckValidPick.gif)
+
+the tests went great with no bumps
+
+---
+
+## Example Test Name
+
+checking for correct code for moving counters
+
+### Test Data Used
+
+inputting data on blank sqaures with counters in the way, and squares with a counter
+
+### Test Result
+
+![example.png](screenshots/CheckForValidMove.gif)
+
+test went smooth it was working as expected
+
+---
+
+## Example Test Name
+
+testing switching between player i.e. player turns
+
+### Test Data Used
+
+inputting data
+
+### Test Result
+
+![example.png](screenshots/)
+
+
 
 ---
 
